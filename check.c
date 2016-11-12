@@ -6,7 +6,7 @@
 /*   By: vbaron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 20:59:59 by vbaron            #+#    #+#             */
-/*   Updated: 2016/11/06 18:26:08 by amanchon         ###   ########.fr       */
+/*   Updated: 2016/11/12 02:01:27 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int			check_tetri(char **tetri)
 	int		co;
 	int		l;
 	int		i;
+	int		count;
 
+	count = 0;
 	co = 0;
 	l = 0;
 	while (l < 4)
@@ -42,12 +44,15 @@ int			check_tetri(char **tetri)
 		while (i < 4)
 		{
 			if (tetri[l][i] == '#')
+			{
 				co += check_co(tetri, l, i);
+				count++;
+			}
 			i++;
 		}
 		l++;
 	}
-	if (co == 6 || co == 8)
+	if ((co == 6 || co == 8) && count == 4)
 		return (1);
 	return (0);
 }
